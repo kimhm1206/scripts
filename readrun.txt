@@ -1,0 +1,33 @@
+RPI 
+
+chmod +x ~~~~~~~ .sh
+
+sudo bash ~~~~~~~~~~~.sh
+
+cloudflared tunnel login 
+
+cloudflared tunnel create youngju-tunnel 
+
+cloudflared tunnel route dns test-tunnel test.telofarm.net 
+
+setup_rpi.sh 실행
+
+
+
+start.sh 하고json파일 넣고   system_update 돌려보기
+
+# 1. 서비스 파일을 system 디렉토리로 복사
+sudo cp telofarm.service /etc/systemd/system/
+
+# 2. systemd 데몬 리로드 (변경 사항 반영)
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+
+# 3. 서비스 등록 (부팅 시 자동 실행)
+sudo systemctl enable telofarm.service
+
+# 4. 서비스 수동 시작 (테스트용)
+sudo systemctl start telofarm.service
+
+# 5. 서비스 상태 확인
+sudo systemctl status telofarm.service

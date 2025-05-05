@@ -1,0 +1,14 @@
+[Unit]
+Description=Telofarm Main Services
+After=network.target
+
+[Service]
+Type=simple
+User=telofarm
+WorkingDirectory=/home/telofarm
+ExecStartPre=/bin/sleep 5
+ExecStart=/bin/bash /home/telofarm/scripts/start.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
