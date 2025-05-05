@@ -27,12 +27,14 @@ if %errorlevel% neq 0 (
 echo 🧹 [2] 기존 프로젝트 제거
 rmdir /s /q "%BASEDIR%\telofarmer_django"
 rmdir /s /q "%BASEDIR%\controller_project"
+rmdir /s /q "%BASEDIR%\scripts"
 
 :: 5. Git 저장소 클론
 echo 🌐 [3] Git 저장소 클론
 cd "%BASEDIR%"
 git clone https://github.com/kimhm1206/telofarmer_django.git
 git clone https://github.com/kimhm1206/controller_project.git
+git clone https://github.com/kimhm1206/scripts.git
 
 :: 6. pip 최신화
 echo 📦 [4] pip 최신화
