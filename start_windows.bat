@@ -7,11 +7,33 @@ set "BASEDIR=%USERPROFILE%\Documents"
 set "DJANGO_DIR=%BASEDIR%\telofarmer_django"
 set "CTRL_DIR=%BASEDIR%\controller_project"
 
+:: tunnelname.txt에서 터널 이름 읽기
+set "TUNNEL_FILE=%BASEDIR%\tunnelname.txt"
+set "TUNNEL_NAME="
+
+if exist "%TUNNEL_FILE%" (
+    for /f "usebackq delims=" %%T in ("%TUNNEL_FILE%") do (
+        set "TUNNEL_NAME=%%T"
+        goto :start_tunnel
+    )
+) else (
+    echo ❌ 터널 이름 파일이 존재하지 않음: %TUNNEL_FILE%
+    pause
+    exit /b
+)
+
+:start_tunnel
+if "%TUNNEL_NAME%"=="" (
+    echo ❌ tunnelname.txt가 비어있습니다.
+    pause
+    exit /b
+)
+
 :: 1. Django 디렉토리로 이동
 cd /d "!DJANGO_DIR!"
 
-echo ☁️ Cloudflare Tunnel 시작...
-start "" cloudflared tunnel run --url http://localhost:8000 posco3
+echo ☁️ Cloudflare Tunnel 시작 → [%TUNNEL_NAME%]
+start "" cloudflared tunnel run --url http://localhost:8000 %TUNNEL_NAME%
 
 timeout /t 2 > nul
 
