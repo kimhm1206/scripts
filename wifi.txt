@@ -1,0 +1,10 @@
+sudo bash -c 'cat >> /etc/wpa_supplicant/wpa_supplicant.conf <<EOF
+
+network={
+    ssid="smartfarm-1"
+    psk="a123456789"
+    priority=10
+}
+EOF'
+
+sudo wpa_cli -i wlan0 reconfigure
