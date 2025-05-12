@@ -1,0 +1,11 @@
+tunnel: seong-ju
+credentials-file: /home/telofarm/.cloudflared/seong-ju.json
+
+ingress:
+  - hostname: seong-ju.telofarm.net
+    service: http://localhost:8000     # Django
+
+  - hostname: ssh-seong-ju.telofarm.net
+    service: ssh://localhost:22        # SSH
+
+  - service: http_status:404
