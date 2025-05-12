@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=telofarm
 WorkingDirectory=/home/telofarm/telofarmer_django
-ExecStart=/usr/bin/daphne config.asgi:application
+ExecStart=/home/telofarm/.local/bin/daphne config.asgi:application
 Restart=always
 RestartSec=3
 
