@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 import subprocess, requests
+from datetime import datetime
 
+with open("/home/telofarm/monitor_log.txt", "a") as f:
+    f.write(f"[{datetime.now()}] 감시 스크립트 실행됨\n")
+    
 CHECKS = [
     ("http://127.0.0.1:8000", "telofarm-daphne"),
     ("https://seong-ju.telofarm.net", "telofarm-tunnel"),
