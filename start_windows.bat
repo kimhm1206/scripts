@@ -49,4 +49,4 @@ echo ▶ 실행: main.py
 start "" cmd /k "python main.py"
 
 echo ✅ 전체 실행 완료!
-pause
+exit
