@@ -1,0 +1,48 @@
+1. 라즈베리파이 또는 윈도우 환경에 맞게 초기 셋업 스크립트 실행
+   - Raspberry Pi: bash ~/setup_rpi.sh
+   - Windows: bash ~/setup_windows.sh
+
+2. 모든 스크립트 파일 실행 권한 부여
+   - chmod +x ~/scripts/*.sh
+
+3. cloudflared 인증 및 터널 생성 (터미널에서)
+   - cloudflared tunnel login
+   - cloudflared tunnel create youngju-tunnel
+
+4. 도메인 라우팅 설정
+   - cloudflared tunnel route dns youngju-tunnel test.telofarm.net
+
+5. (Raspberry Pi 전용) config.yml 생성 후 SSH까지 등록
+   - /home/telofarm/.cloudflared/config.yml 작성
+   - ssh-seong-ju.telofarm.net 같은 서브도메인도 추가 가능
+
+6. Cloudflare Access 대시보드에서 어플리케이션 등록
+   - https://dash.teams.cloudflare.com → Access → Applications
+
+7. cloudflared 인증 JSON 파일을 /home/telofarm/.cloudflared/ 에 복사
+
+8. start.sh를 통해 수동 실행 테스트 가능
+
+9. systemd 서비스 등록 절차
+   - sudo cp telofarm-*.service /etc/systemd/system/
+   - sudo systemctl daemon-reexec
+   - sudo systemctl daemon-reload
+   - sudo systemctl enable telofarm-daphne
+   - sudo systemctl enable telofarm-controller
+   - sudo systemctl enable telofarm-tunnel
+   - sudo systemctl start telofarm-daphne
+   - sudo systemctl start telofarm-controller
+   - sudo systemctl start telofarm-tunnel
+
+10. 서비스 정상 작동 여부 확인
+   - sudo systemctl status telofarm-daphne
+   - sudo systemctl status telofarm-controller
+   - sudo systemctl status telofarm-tunnel
+
+11. Wi-Fi 연결 확인 (필요 시)
+   - nmcli connection show --active
+   - sudo cat /etc/NetworkManager/system-connections/*.nmconnection
+
+12. 업데이트 테스트
+    /system_update/
+
