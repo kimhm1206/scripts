@@ -27,3 +27,5 @@ cd "%BASEDIR%\scripts" || (
 git pull
 
 echo ✅ 모든 프로젝트 최신 상태로 업데이트 완료
+
+pause
