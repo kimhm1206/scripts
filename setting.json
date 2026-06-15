@@ -1,5 +1,10 @@
 {
   "relayboard_type": "8port",
+  "relay_output_mode": "tcp",
+  "tcp_relay": {
+    "address": "192.168.5.138",
+    "port": 502
+  },
   "sensor_ports": "com1",
   "test_mode": true,
   "irrigation_channels": {
