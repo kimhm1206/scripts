@@ -1,4 +1,10 @@
 {
+  "master": {
+    "relay_control_type": "tcp",
+    "external_sensor_enabled": true,
+    "extra_control_enabled": false,
+    "site_ids": []
+  },
   "relayboard_type": "8port",
   "relay_output_mode": "tcp",
   "tcp_relay": {
@@ -9,12 +15,12 @@
   "test_mode": true,
   "irrigation_channels": {
     "1": true,
-    "2": true,
+    "2": false,
     "3": false,
     "4": false
   },
   "led_channels": {
-    "1": true,
+    "1": false,
     "2": false,
     "3": false,
     "4": false
