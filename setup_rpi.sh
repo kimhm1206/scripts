@@ -41,6 +41,10 @@ pip3 install --break-system-packages \
   psycopg2-binary pyasn1 pyasn1_modules pyOpenSSL service-identity sqlparse tomli Twisted \
   txaio whitenoise zope.interface python3-lgpio
 
+echo "📦 [8-1] 프로젝트 requirements 설치"
+pip3 install --break-system-packages -r "$BASEDIR/telofarmer_django/requirements.txt"
+pip3 install --break-system-packages -r "$BASEDIR/controller_project/requirements.txt"
+
 echo "🈶 [9] 한글 폰트 설치 (나눔 폰트)"
 sudo apt install -y fonts-nanum
 sudo fc-cache -fv
